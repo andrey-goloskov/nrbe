@@ -1,0 +1,31 @@
+version: "3.8"
+services:
+  mongo:
+    image: mongo:7.0.4
+    volumes:
+      - mt1mongo:/data/db
+      - mt1mongo:/data/configdb
+    container_name: mongodb-magnus
+  
+  express:
+    environment:
+      - NODE_ENV=production
+      - NODE_PORT=32780
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: express-magnus
+    depends_on:
+      - mongo
+
+  nginx:
+    build:
+      context: ./nginx
+      dockerfile: Dockerfile
+    container_name: nginx-magnus
+    ports:
+      - "80:80"
+    depends_on:
+      - express
+volumes:
+  mt1mongo:
