@@ -1,16 +1,64 @@
 @import 'normalize.css';
 
+:root {
+  --global-fontsize: 20px;
+}
+
+@media screen and (max-width: 814px) {
+  :root {
+    --global-fontsize: 16px;
+  }
+}
+
+html {
+  font-size: var(--global-fontsize);
+}
+
 body {
   margin: 0;
   padding: 0;
 }
 
 .App {
-  height: 100vh;
+  /* height: 100vh; */
   width: 100vw;
   border-top: 2px solid green;
   border-right: 4px solid red;
   border-bottom: 7px solid blue;
   border-left: 10px solid black;
   box-sizing: border-box;
+}
+
+.container_main {
+  max-width: 77.5rem;
+  display: flex;
+}
+
+.description {
+  flex-basis: 50%;
+  padding: 4em 5.25em;
+}
+
+.container_img {
+  flex-basis: 50%;
+  overflow: hidden;
+}
+
+img {
+  height: auto;
+  max-width: 100%;
+  vertical-align: middle;
+  font-style: italic;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+@media screen and (max-width: 814px) {
+  .container_main {
+    flex-direction: column;
+  }
+
+  .description {
+    padding: 0.8em 1.05em;
+  }
 }
