@@ -22,6 +22,8 @@ services:
     build:
       context: ./nginx
       dockerfile: Dockerfile
+    volumes:
+      - /root/text_only:/var/www/logs
     container_name: nginx-magnus
     ports:
       - "80:80"
